@@ -33,17 +33,13 @@ const addTodoForm = addTodoPopupEl.querySelector(".popup__form");
 const addTodoCloseBtn = addTodoPopupEl.querySelector(".popup__close");
 
 
-const openModal = (modal) => {
-  modal.classList.add("popup_visible");
-};
-
 const closeModal = (modal) => {
   modal.classList.remove("popup_visible");
 };
 
 
 addTodoButton.addEventListener("click", () => {
-  openModal(addTodoPopupEl);
+  addTodoPopup.open();
 });
 
 addTodoCloseBtn.addEventListener("click", () => {
