@@ -6,6 +6,7 @@ import Todo from "../components/Todo.js";
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+import TodoCounter from '../components/TodoCounter.js';
 
 const addTodoPopup = new PopupWithForm({popupSelector: '#add-todo-popup', handleFormSubmit: (inputValues) => {
 const name = inputValues.name;
@@ -24,6 +25,7 @@ const name = inputValues.name;
 }});
 
 const todosList = document.querySelector(".todos__list");
+const todoCounter = new TodoCounter(initialTodos, ".counter__text");
 
 const generateTodo = (data) => {
   const todo = new Todo(data, "#todo-template");
