@@ -7,7 +7,21 @@ import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 
-const addTodoPopup = new PopupWithForm({popupSelector: '#add-todo-popup', handleFormSubmit: () => {}});
+const addTodoPopup = new PopupWithForm({popupSelector: '#add-todo-popup', handleFormSubmit: (inputValues) => {
+const name = inputValues.name;
+  const dateInput = inputValues.date;
+
+  // Create a date object and adjust for timezone
+  const date = new Date(dateInput);
+  date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
+
+  const id = uuidv4(); // Generate a unique ID for the new todo
+
+  const values = { name, date, id };
+  const todo = generateTodo(values);
+  todosList.append(todo);
+  addTodoPopup.close();
+}});
 
 const todosList = document.querySelector(".todos__list");
 
@@ -47,23 +61,7 @@ addTodoButton.addEventListener("click", () => {
 });
 
 
-//remove this later
-addTodoForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-  const name = evt.target.name.value;
-  const dateInput = evt.target.date.value;
 
-  // Create a date object and adjust for timezone
-  const date = new Date(dateInput);
-  date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
-
-  const id = uuidv4(); // Generate a unique ID for the new todo
-
-  const values = { name, date, id };
-  const todo = generateTodo(values);
-  todosList.append(todo);
-  addTodoPopup.close();
-});
 
 const newTodoValidator = new FormValidator(validationConfig, addTodoForm);
 newTodoValidator.enableValidation();
