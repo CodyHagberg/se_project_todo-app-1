@@ -16,6 +16,8 @@ const generateTodo = (data) => {
   return todo.getView();
 }
 
+
+
 const section = new Section({
   items: initialTodos,
   renderer: (item) => {
