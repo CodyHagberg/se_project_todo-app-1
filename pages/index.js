@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
+import { v4 as uuidv4 } from "https://jspm.dev/uuid";
 
 
 import { initialTodos, validationConfig } from "../utils/constants.js";
@@ -20,7 +20,7 @@ const name = inputValues.name;
 
   const values = { name, date, id };
   const todo = generateTodo(values);
-  todosList.append(todo);
+  section.addItem(todo);
   todoCounter.updateTotal(true);
   addTodoPopup.close();
 }});
@@ -52,7 +52,7 @@ const section = new Section({
   items: initialTodos,
   renderer: (item) => {
     const todoElement = generateTodo(item);
-    todosList.append(todoElement);
+    section.addItem(todoElement);
   },
   containerSelector:".todos__list" 
 });
@@ -62,14 +62,9 @@ const section = new Section({
 const addTodoButton = document.querySelector(".button_action_add");
 const addTodoPopupEl = document.querySelector("#add-todo-popup");
 const addTodoForm = addTodoPopupEl.querySelector(".popup__form");
-const addTodoCloseBtn = addTodoPopupEl.querySelector(".popup__close");
+
 
 addTodoPopup.setEventListeners();
-
-
-const closeModal = (modal) => {
-  modal.classList.remove("popup_visible");
-};
 
 
 addTodoButton.addEventListener("click", () => {

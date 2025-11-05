@@ -16,4 +16,4 @@ In const there are pregenerated todos. To track these we use a CDN called UUID. 
 
 This project is deployed on GitHub Pages:
 
-- [(https://github.com/CodyHagberg/se_project_todo-app-1)]
+- [https://codyhagberg.github.io/se_project_todo-app-1/]

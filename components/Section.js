@@ -13,4 +13,4 @@ class Section {
     this._container.append(element);
   }
 }
-  export default Section;
+export default Section;

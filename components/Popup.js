@@ -4,7 +4,7 @@ constructor({ popupSelector }) {
     this._popupCloseBtn = this._popupElement.querySelector(".popup__close");
     }
 
-    _handleEscapeClose(evt) {
+    _handleEscapeClose = (evt) => {
       if (evt.key === "Escape") {
         this.close();
       }
@@ -22,7 +22,8 @@ constructor({ popupSelector }) {
       this._popupElement.addEventListener("mousedown", (evt) => {
         if (evt.target === this._popupElement || evt.target.classList.contains("popup__close")) {
           this.close();
-    }});
+    }
+  });
       }
     }
   
