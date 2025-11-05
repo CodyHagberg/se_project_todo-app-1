@@ -21,14 +21,28 @@ const name = inputValues.name;
   const values = { name, date, id };
   const todo = generateTodo(values);
   todosList.append(todo);
+  todoCounter.updateTotal(true);
   addTodoPopup.close();
 }});
+
+function handleCheck(completed) {
+  todoCounter.updateCompleted(completed);
+
+}
+
+function handleDelete(completed) {
+  if (completed) {
+    todoCounter.updateCompleted(false);
+  }
+  todoCounter.updateTotal(false);
+}
+
 
 const todosList = document.querySelector(".todos__list");
 const todoCounter = new TodoCounter(initialTodos, ".counter__text");
 
 const generateTodo = (data) => {
-  const todo = new Todo(data, "#todo-template");
+  const todo = new Todo(data, "#todo-template", handleCheck, handleDelete);
   return todo.getView();
 }
 
